@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog Overview</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #374151; /* Dark gray text */
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1f2937;
+        }
+        .category-item, .subcategory-item, .type-item {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .category-header, .subcategory-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .category-header:hover, .subcategory-header:hover {
+            background-color: #e5e7eb; /* Lighter gray on hover */
+        }
+        .category-header {
+            background-color: #3b82f6; /* Blue for categories */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.15rem;
+        }
+        .subcategory-header {
+            background-color: #60a5fa; /* Lighter blue for subcategories */
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-left: 20px; /* Indent subcategories */
+        }
+        .type-item {
+            padding: 8px 15px;
+            margin-left: 40px; /* Indent types further */
+            border-left: 2px solid #d1d5db; /* Light gray border for types */
+            margin-bottom: 3px;
+        }
+        .toggle-icon {
+            margin-right: 10px;
+            transition: transform 0.2s ease;
+        }
+        .toggle-icon.rotated {
+            transform: rotate(90deg); /* Rotate icon when expanded */
+        }
+        .hidden-list {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header text-3xl font-extrabold">Product Catalog Overview</h1>
+        <p class="text-center text-lg text-gray-600 mb-8">Explore our offerings by expanding categories and sub-categories.</p>
+        <div id="catalog-container">
+            <!-- Catalog will be rendered here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Data representing the product catalog hierarchy
+        // This data is parsed from the 'product-catalog-outline' immersive artifact.
+        const catalogData = [
+            {
+                name: "Accessories",
+                subcategories: [
+                    {
+                        name: "Batteries",
+                        types: ["9V Battery", "AA Battery", "AAA Battery"]
+                    },
+                    {
+                        name: "Cable Management",
+                        types: ["Cable Labels", "Cable Wrap", "Hook & Loop Cable Tie", "Patch Cable Holder", "Scribble Strips"]
+                    },
+                    {
+                        name: "Cleaners & Sprays",
+                        types: ["Contact Cleaners", "Equipment Care", "Equipment Care Kits", "Fader Lube", "Fingerboard Conditioner", "Guitar Maintenance", "Guitar Polish", "Headphone Cleaners", "Microphone Cleaners", "Surface Cleaners"]
+                    },
+                    {
+                        name: "Console Lamps",
+                        types: ["Incandescent Console Lamp", "LED Console Lamp"]
+                    },
+                    {
+                        name: "Footswitches",
+                        types: ["Dual Latching", "Latching Footswitch", "Momentary Footswitch", "Single Latching"]
+                    },
+                    {
+                        name: "Headphones",
+                        types: ["Stereo Headphones"]
+                    },
+                    {
+                        name: "Keyboard Accessories",
+                        types: ["Keyboard Cover"]
+                    },
+                    {
+                        name: "Mic Clips, Mounts & Accessories",
+                        types: ["Clip Adapter", "Foam Windscreen", "Lapel Cable Clip", "Mic Clip", "Microphone Screen", "Spring Mic Clip"]
+                    },
+                    {
+                        name: "Microphones",
+                        types: ["Earset"]
+                    },
+                    {
+                        name: "Power Adapters",
+                        types: ["Universal Power Supply/Adapter"]
+                    },
+                    {
+                        name: "Power Supplies",
+                        types: ["Daisy Chain Extension"]
+                    },
+                    {
+                        name: "Stands & Racks",
+                        types: ["19-inch Rack", "Desktop Boom Arm", "Desktop Mic Stand", "Guitar Stands", "Keyboard Stand", "Mic Holders", "Music Stand", "Rack Accessories", "Stand Adapter", "Tripod Mic Stand"]
+                    },
+                    {
+                        name: "Tools & Supplies",
+                        types: ["Gloves", "Tape", "Testers"]
+                    },
+                    {
+                        name: "Wireless Bodypack Accessories",
+                        types: ["Wireless Mic Cables"]
+                    }
+                ]
+            },
+            {
+                name: "Adapters",
+                subcategories: [
+                    {
+                        name: "Audio Adapters",
+                        types: ["1/4 in Coupler", "1/4 in TRS to 1/4 in TS Adapter", "1/4 in TRS to 3.5mm TRS Adapter", "1/4 in TRS to XLR3F Adapter", "1/4 in TRS to XLR3M Adapter", "1/4 in TS to 1/4 in TRS Adapter", "1/4 in TS to 3.5mm TRS Adapter", "1/4 in TS to 3.5mm TS Adapter", "1/4 in TS to Dual Banana", "1/4 in TS to RCA Adapter", "1/4 to 1/4", "1/4 TS To speakON", "2.5mm TRS to 3.5mm TRS Adapter", "3.5mm TRS Coupler", "3.5mm TRS to 1/4 in TRS Adapter", "3.5mm TRS to 1/4 in TS Adapter", "3.5mm TRS to 2.5mm TRS", "3.5mm TRS to 2.5mm TRS Adapter", "3.5mm TRS to 3.5mm TRS", "3.5mm TRS to Dual RCA Coupler", "Active Preamplifier", "Air Travel Headphone Adapter", "BNC to Same", "Dual 1/4 in TRS to 1/4 in TRS Adapter", "Dual RCA to 1/4 in TRS Adapter", "Dual RCA to 3.5mm TRS Adapter", "Dual RCA to RCA Adapter", "F to Same", "Gender Changer", "Ground Lifter", "Headphone Adapter", "Impedance Transformer", "Input Attenuator", "Insert Direct-out Adapter", "Low-voltage Adapter", "Phase Reverser", "RCA Coupler", "RCA to 1/4 in TS Adapter", "RCA to 3.5mm TS Adapter", "RCA to Same", "RCA to XLR3F Adapter", "RCA to XLR3M Adapter", "Signal Splitter", "Speaker Cable", "Speaker Coupler", "XLR3F to 1/4 in TRS Adapter", "XLR3F to RCA Adapter", "XLR3M to 1/4 in TRS Adapter", "XLR3M to RCA Adapter"]
+                    },
+                    {
+                        name: "Data Adapters",
+                        types: ["Midi Coupler"]
+                    },
+                    {
+                        name: "Digital Adapters",
+                        types: ["Fiber Optic Adapter, Toslink to Mini-Toslink", "USB 3.1 Type-C male to USB 3.0 female Adapter"]
+                    },
+                    {
+                        name: "Other Adapters",
+                        types: ["DMX", "DMX On/Off Switch"]
+                    },
+                    {
+                        name: "Other Adapters/Terminators",
+                        types: ["DMX Terminator"]
+                    },
+                    {
+                        name: "Power Adapters",
+                        types: ["IEC C13 to Nema 5-15p", "NEMA 5-15R to NEMA 5-15P"]
+                    },
+                    {
+                        name: "Video Adapters",
+                        types: ["75-ohm Adapter, BNC to RCA", "75-ohm Adapter, RCA to BNC", "VGA Coupler"]
+                    }
+                ]
+            },
+            {
+                name: "Audio Interfaces",
+                subcategories: [
+                    {
+                        name: "Bluetooth Interfaces",
+                        types: ["Transmitter and Receiver"]
+                    }
+                ]
+            },
+            {
+                name: "Cable Parts",
+                subcategories: [
+                    {
+                        name: "Connectors",
+                        types: ["1/4 in", "3.5 mm", "Dual Banana", "Jumbo 1/4 in", "Phoenix 3-pole", "RCA", "Right-angle 1/4 in", "Right-angle XLR", "speakON", "Wide 1/4 in", "Wide Opening 1/4 in", "XLR"]
+                    }
+                ]
+            },
+            {
+                name: "Cables",
+                subcategories: [
+                    {
+                        name: "Audio Cables",
+                        types: ["Balanced Patch Cables", "Eurorack Patch Cable", "Headphone Adapter Cables", "Headphone Extension Cables", "Insert Cables", "Instrument Cable", "Microphone Cables", "Mono Interconnects", "Pedalboard Patch Cable", "Speaker Cable", "Stereo/Balanced Interconnects", "Unbalanced Interconnects", "Unbalanced Patch Cables"]
+                    },
+                    {
+                        name: "Bulk Cable",
+                        types: ["AES/EBU", "Microphone Cables", "Speaker Cable"]
+                    },
+                    {
+                        name: "Camera Cables",
+                        types: ["Microphone Cables"]
+                    },
+                    {
+                        name: "Digital Cables",
+                        types: ["AES/EBU", "BNC Cable", "Ethernet Cables", "Fiber Optic", "HDMI Cable", "SPDIF Cable", "USB 2.0 Cable", "USB 2.0 Extension Cable", "USB 3.0 Cable", "USB 3.1 Cable"]
+                    },
+                    {
+                        name: "Lighting Cables",
+                        types: ["DMX Cable"]
+                    },
+                    {
+                        name: "MIDI Cables",
+                        types: ["5-pin DIN", "MIDI Cable"]
+                    },
+                    {
+                        name: "Power Cables",
+                        types: ["Distribution", "Extension", "IEC", "Piggy Back", "Power X", "PowerCON"]
+                    },
+                    {
+                        name: "Synthesizer Cables",
+                        types: ["Controller Cable"]
+                    },
+                    {
+                        name: "Y Cables",
+                        types: ["Headset/Mic Breakout Cable", "Stereo Breakout Cable", "Y Splitter Cables"]
+                    },
+                    {
+                        name: "Snakes",
+                        types: ["AES/EBU Digital Snakes", "Balanced Snake Cables", "Insert Snakes", "Unbalanced Snake Cables"]
+                    }
+                ]
+            },
+            {
+                name: "Stage & Studio",
+                subcategories: [
+                    {
+                        name: "DI Boxes",
+                        types: ["Active DI Box", "Passive DI Box"]
+                    },
+                    {
+                        name: "Digital Audio Converters",
+                        types: ["S/PDIF Coax to AES/EBU Converter", "S/PDIF Optical to AES/EBU Converter"]
+                    },
+                    {
+                        name: "Patch Bays",
+                        types: ["TRS Patch Bay Module", "XLR Patch Bay", "XLR Patch Bay Module"]
+                    },
+                    {
+                        name: "Stage & Studio Boxes & Snakes",
+                        types: ["Snake Box"]
+                    },
+                    {
+                        name: "Switchers",
+                        types: ["Audio Switcher"]
+                    },
+                    {
+                        name: "USB Interface Cables",
+                        types: ["Guitar to USB Interface", "Mic to USB Interface", "MIDI to USB Interface"]
+                    }
+                ]
+            }
+        ];
+
+        // Function to create a list item for a product type
+        function createTypeElement(type) {
+            const li = document.createElement('li');
+            li.className = 'type-item text-gray-700';
+            li.textContent = type;
+            return li;
+        }
+
+        // Function to create a list for product types within a subcategory
+        function createTypesList(types) {
+            const ul = document.createElement('ul');
+            ul.className = 'hidden-list'; // Initially hidden
+            types.forEach(type => {
+                ul.appendChild(createTypeElement(type));
+            });
+            return ul;
+        }
+
+        // Function to create a list item for a subcategory
+        function createSubcategoryElement(subcategory) {
+            const li = document.createElement('li');
+            li.className = 'subcategory-item';
+
+            const header = document.createElement('div');
+            header.className = 'subcategory-header';
+            header.innerHTML = '<span class="toggle-icon">&#9654;</span>' + subcategory.name; // Right-pointing triangle icon
+            li.appendChild(header);
+
+            if (subcategory.types && subcategory.types.length > 0) {
+                const typesList = createTypesList(subcategory.types);
+                li.appendChild(typesList);
+
+                // Add click event to toggle visibility of types
+                header.addEventListener('click', () => {
+                    typesList.classList.toggle('hidden-list');
+                    header.querySelector('.toggle-icon').classList.toggle('rotated');
+                });
+            }
+            return li;
+        }
+
+        // Function to create a list for subcategories within a category
+        function createSubcategoriesList(subcategories) {
+            const ul = document.createElement('ul');
+            ul.className = 'hidden-list'; // Initially hidden
+            subcategories.forEach(subcategory => {
+                ul.appendChild(createSubcategoryElement(subcategory));
+            });
+            return ul;
+        }
+
+        // Function to create a list item for a main category
+        function createCategoryElement(category) {
+            const li = document.createElement('li');
+            li.className = 'category-item';
+
+            const header = document.createElement('div');
+            header.className = 'category-header';
+            header.innerHTML = '<span class="toggle-icon">&#9654;</span>' + category.name; // Right-pointing triangle icon
+            li.appendChild(header);
+
+            if (category.subcategories && category.subcategories.length > 0) {
+                const subcategoriesList = createSubcategoriesList(category.subcategories);
+                li.appendChild(subcategoriesList);
+
+                // Add click event to toggle visibility of subcategories
+                header.addEventListener('click', () => {
+                    subcategoriesList.classList.toggle('hidden-list');
+                    header.querySelector('.toggle-icon').classList.toggle('rotated');
+                });
+            }
+            return li;
+        }
+
+        // Main function to render the catalog
+        function renderCatalog() {
+            const catalogContainer = document.getElementById('catalog-container');
+            const mainList = document.createElement('ul');
+            mainList.className = 'list-none p-0'; // Remove default list styling
+
+            catalogData.forEach(category => {
+                mainList.appendChild(createCategoryElement(category));
+            });
+
+            catalogContainer.appendChild(mainList);
+        }
+
+        // Render the catalog when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', renderCatalog);
+    </script>
+</body>
+</html>
