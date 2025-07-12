@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosa: The Unseen Connections Powering Your Sound</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a professional look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light background */
+            color: #334155; /* Dark gray text */
+        }
+        .section-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            color: #1e293b; /* Darker blue-gray */
+            margin-bottom: 1.5rem; /* mb-6 */
+            text-align: center;
+        }
+        .subsection-title {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: #334155;
+            margin-bottom: 1rem;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* shadow-lg */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Ensure cards in a grid have equal height */
+        }
+        .data-point {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            color: #0d9488; /* Teal for emphasis */
+        }
+        .icon {
+            font-size: 2.5rem; /* Larger icon size */
+            color: #0f766e; /* Darker teal */
+            margin-right: 0.5rem; /* Adjusted margin for better spacing */
+            text-align: center;
+        }
+        .narrative-snippet {
+            font-size: 1.125rem; /* text-lg */
+            color: #475569; /* Slate gray */
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .footer-text {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 700; /* font-bold */
+            color: #1e293b;
+            text-align: center;
+        }
+
+        /* Animation for the header section */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.4), 0 0 10px rgba(0, 255, 255, 0.2); }
+            50% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 25px rgba(0, 255, 255, 0.4); }
+            100% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.4), 0 0 10px rgba(0, 255, 255, 0.2); }
+        }
+
+        .header-visual {
+            position: relative;
+            overflow: hidden;
+            background-color: #1e293b; /* Dark background for contrast */
+            animation: pulse-glow 3s infinite ease-in-out; /* Apply animation */
+        }
+
+        .header-visual::before,
+        .header-visual::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 255, 255, 0.3); /* Cyan glow */
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.6;
+        }
+
+        .header-visual::before {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            left: -50px;
+            animation: move-glow-1 8s infinite ease-in-out;
+        }
+
+        .header-visual::after {
+            width: 180px;
+            height: 180px;
+            bottom: -60px;
+            right: -60px;
+            animation: move-glow-2 10s infinite ease-in-out reverse;
+        }
+
+        @keyframes move-glow-1 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, 50px); }
+            50% { transform: translate(0, 100px); }
+            75% { transform: translate(-50px, 50px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move-glow-2 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-50px, -50px); }
+            50% { transform: translate(0, -100px); }
+            75% { transform: translate(50px, -50px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* Specific styles for product callouts in Section 1 */
+        .product-callout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distribute space between text and number */
+            margin-bottom: 0.5rem; /* Small margin between items */
+            padding: 0.25rem 0; /* Slight padding for visual separation */
+            border-bottom: 1px solid rgba(0,0,0,0.05); /* Subtle separator */
+        }
+        .product-callout:last-child {
+            border-bottom: none; /* No border for the last item */
+        }
+        .product-callout-text {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem; /* Slightly smaller for detail */
+            font-weight: 600; /* Semi-bold */
+            color: #475569; /* Darker gray for readability */
+        }
+        .product-callout-value {
+            font-size: 0.95rem; /* Match text size */
+            font-weight: 700; /* Bold for value */
+            color: #0d9488; /* Teal for emphasis */
+            white-space: nowrap; /* Prevent number from wrapping */
+        }
+        .sub-detail {
+            font-size: 0.85rem; /* Even smaller for sub-details */
+            color: #64748b; /* Lighter gray */
+            margin-left: 2.5rem; /* Indent sub-details */
+            margin-top: -0.2rem; /* Pull up slightly */
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 md:p-12">
+
+    <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl p-6 sm:p-10 md:p-16">
+
+        <!-- Infographic Title -->
+        <h1 class="text-5xl sm:text-6xl font-extrabold text-center text-gray-900 mb-8 leading-tight">
+            Hosa: The Unseen Connections Powering Your Sound
+        </h1>
+        <p class="text-xl sm:text-2xl text-center text-gray-600 mb-12">
+            Hosa is not just a cable company; we are the essential backbone of every audio setup, providing the critical links, power, and maintenance that enable creativity and performance.
+        </p>
+
+        <!-- Header Image Placeholder - Updated Section -->
+        <div class="w-full h-64 rounded-xl mb-12 flex items-center justify-center text-white text-2xl font-semibold header-visual">
+            <p class="relative z-10">Your Audio Journey, Connected by Hosa</p>
+        </div>
+
+        <!-- Section 1: The Foundation - Where Hosa Dominates -->
+        <section class="mb-16">
+            <h2 class="section-title">Connecting the World of Sound: Our Core Strength</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Cables Card -->
+                <div class="card bg-teal-50 border-t-4 border-teal-600">
+                    <h3 class="subsection-title text-teal-700">CABLES</h3>
+                    <p class="text-gray-700 text-lg mb-2">71.2% of Total Sales</p>
+                    <p class="data-point text-teal-800">$8,201,890.99</p>
+                    <p class="text-gray-600 mt-4 mb-4">The undisputed leader, forming the essential nervous system of countless setups.</p>
+                    <div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">🎤</span> Microphone Cables:</span>
+                            <span class="product-callout-value">$1,241,799.42</span>
+                        </div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">🎛️</span> Stereo/Balanced Interconnects:</span>
+                            <span class="product-callout-value">$1,928,739.90</span>
+                        </div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">📦</span> Snakes:</span>
+                            <span class="product-callout-value">$804,294.15</span>
+                        </div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">Y</span> Y Cables:</span>
+                            <span class="product-callout-value">$960,942.07</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accessories Card -->
+                <div class="card bg-blue-50 border-t-4 border-blue-600">
+                    <h3 class="subsection-title text-blue-700">ACCESSORIES</h3>
+                    <p class="text-gray-700 text-lg mb-2">14.0% of Total Sales</p>
+                    <p class="data-point text-blue-800">$1,616,919.95</p>
+                    <p class="text-gray-600 mt-4 mb-4">Beyond connectivity, we provide essential tools for equipment care and organization.</p>
+                    <div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">🧴</span> Cleaners & Sprays:</span>
+                            <span class="product-callout-value">$810,655.17</span>
+                        </div>
+                        <p class="sub-detail">(Contact Cleaners: $638,425.31)</p>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">🔗</span> Cable Management:</span>
+                            <span class="product-callout-value">$89,605.50</span>
+                        </div>
+                        <p class="sub-detail">(Hook & Loop Ties: $61,085.07)</p>
+                    </div>
+                </div>
+
+                <!-- Adapters Card -->
+                <div class="card bg-purple-50 border-t-4 border-purple-600">
+                    <h3 class="subsection-title text-purple-700">ADAPTERS</h3>
+                    <p class="text-gray-700 text-lg mb-2">7.5% of Total Sales</p>
+                    <p class="data-point text-purple-800">$858,175.29</p>
+                    <p class="text-gray-600 mt-4 mb-4">Bridging every gap, ensuring seamless compatibility across all your gear.</p>
+                    <div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">🔌</span> Impedance Transformer:</span>
+                            <span class="product-callout-value">$95,652.29</span>
+                        </div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">↔️</span> Gender Changer:</span>
+                            <span class="product-callout-value">$78,162.84</span>
+                        </div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">🎧</span> 3.5mm TRS to 1/4 in TRS:</span>
+                            <span class="product-callout-value">$75,374.08</span>
+                        </div>
+                        <div class="product-callout">
+                            <span class="product-callout-text"><span class="icon">🎧</span> Headphone Adapter:</span>
+                            <span class="product-callout-value">$41,870.27</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="narrative-snippet">
+                Hosa is the undisputed leader in providing high-quality cables, forming the essential nervous system of countless studios, stages, and personal setups worldwide. Our robust cable lineup ensures your sound always reaches its destination.
+            </p>
+        </section>
+
+        <!-- Section 2: Beyond the Cable - The Essential Enablers -->
+        <section class="mb-16">
+            <h2 class="section-title">More Than Just Wires: Equipping Your Creativity</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <div class="icon">👂</div>
+                    <h3 class="subsection-title">Earset Microphones</h3>
+                    <p class="data-point">$202,615.09</p>
+                    <p class="text-gray-600 mt-2">Expanding into specialized audio capture, empowering performers and presenters.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"> 🧍 </div>
+                    <h3 class="subsection-title">Tripod Mic Stands</h3>
+                    <p class="data-point">$106,296.83</p>
+                    <p class="text-gray-600 mt-2">Providing stable foundations for your audio equipment.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"> 🩹 </div>
+                    <h3 class="subsection-title">Tape (Tools & Supplies)</h3>
+                    <p class="data-point">$124,371.38</p>
+                    <p class="text-gray-600 mt-2">The studio and stage staple for practical, everyday audio needs.</p>
+                </div
+                ><div class="card">
+                    <div class="icon"> 🔬 </div>
+                    <h3 class="subsection-title">Testers (Tools & Supplies)</h3>
+                    <p class="data-point">$53,354.86</p>
+                    <p class="text-gray-600 mt-2">Giving you the tools to diagnose and maintain your connections with confidence.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"> ⚡ </div>
+                    <h3 class="subsection-title">Universal Power Supply/Adapter</h3>
+                    <p class="data-point">$56,163.29</p>
+                    <p class="text-gray-600 mt-2">Ensuring your equipment is always powered up and ready to go.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Emerging Opportunities - The Future of Hosa Connectivity -->
+        <section class="mb-16">
+            <h2 class="section-title">Growing with Your Needs: Future-Forward Solutions</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card bg-green-50 border-t-4 border-green-600">
+                    <div class="icon text-green-700">📶</div>
+                    <h3 class="subsection-title text-green-700">Bluetooth Interfaces</h3>
+                    <p class="data-point text-green-800">$85,528.57</p>
+                    <p class="text-gray-600 mt-2">Embracing wireless convenience, seamlessly integrating your devices.</p>
+                </div>
+                <div class="card bg-green-50 border-t-4 border-green-600">
+                    <div class="icon text-green-700">📡</div>
+                    <h3 class="subsection-title text-green-700">Wireless Bodypack Accessories</h3>
+                    <p class="data-point text-green-800">$30,025.20</p>
+                    <p class="text-gray-600 mt-2">Supporting the evolving landscape of wireless audio.</p>
+                </div>
+                <div class="card bg-green-50 border-t-4 border-green-600">
+                    <div class="icon text-green-700">🔄</div>
+                    <h3 class="subsection-title text-green-700">Digital Audio Converters</h3>
+                    <p class="data-point text-green-800">$35,321.88</p>
+                    <p class="text-gray-600 mt-2">Bridging digital and analog worlds for ultimate flexibility.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <h3 class="subsection-title">Opportunities for Expansion:</h3>
+                <ul class="list-disc list-inside text-lg text-gray-700 mx-auto max-w-xl">
+                    <li class="mb-2">**Specialty Cables:** Higher-end solutions for discerning professionals.</li>
+                    <li class="mb-2">**Advanced Maintenance Kits:** Comprehensive care for specific gear types.</li>
+                    <li>**Power Management:** Exploring more robust power solutions for studios and stages.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Call to Action/Brand Statement -->
+        <section class="text-center mt-16 pt-8 border-t-2 border-gray-200">
+            <h2 class="footer-text mb-6">Hosa Technology: Connect. Create. Perform.</h2>
+            <!-- Using the direct URL from hosatech.com for the logo -->
+            <img src="https://hosatech.com/wp-content/themes/hosa-technology/images/Hosa-Logo-RD.png" alt="Hosa Technology Logo" class="mx-auto mb-6 h-20 sm:h-24 object-contain">
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+                From the smallest adapter to the most intricate snake, Hosa is dedicated to providing the reliable, high-performance connections that bring your sound to life. Join the millions who trust Hosa to power their audio journey.
+            </p>
+            <!-- Optional: Add a link or QR code here -->
+            <p class="text-lg text-blue-600 mt-4"><a href="https://hosatech.com" target="_blank" class="hover:underline">Visit HosaTech.com to learn more</a></p>
+        </section>
+
+    </div>
+
+</body>
+</html>

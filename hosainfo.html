@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosa Technology | Weekly Lead Generation Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px; 
+            }
+        }
+        .flowchart-step {
+            border-left-width: 4px;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .flowchart-step:before {
+            content: '';
+            position: absolute;
+            left: -0.875rem; 
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 9999px;
+            background-color: white;
+            border-width: 4px;
+        }
+        .flowchart-connector {
+            position: absolute;
+            left: -2px; 
+            top: 1.5rem;
+            bottom: -1rem;
+            width: 4px;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <!-- Header Section -->
+    <header class="bg-[#004AAD] text-white text-center p-8 md:p-12 shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-black tracking-tight">Hosa's Blueprint for AV Market Leadership</h1>
+        <p class="mt-4 max-w-3xl mx-auto text-lg text-[#CDE5F1]">A weekly action plan for strategic lead generation and customer acquisition in the professional AV & Integration space.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Section: Target Audience -->
+            <div class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-[#004AAD] mb-4">Understanding Our Audience</h2>
+                <p class="mb-6">Our success begins with a deep understanding of the key professionals we serve. This plan is tailored to engage three core segments within the AV industry.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="border-2 border-gray-200 rounded-lg p-4">
+                        <div class="text-4xl text-[#0079C2]">🔌</div>
+                        <h3 class="text-xl font-bold mt-2">AV Integrators</h3>
+                        <p class="text-sm mt-1">Companies designing and installing complex AV systems for a wide range of clients.</p>
+                    </div>
+                    <div class="border-2 border-gray-200 rounded-lg p-4">
+                        <div class="text-4xl text-[#00A6D6]">🎚️</div>
+                        <h3 class="text-xl font-bold mt-2">Live Sound & Production</h3>
+                        <p class="text-sm mt-1">Engineers and houses managing audio for concerts, events, and recordings.</p>
+                    </div>
+                    <div class="border-2 border-gray-200 rounded-lg p-4">
+                        <div class="text-4xl text-[#67B8DE]">📝</div>
+                        <h3 class="text-xl font-bold mt-2">System Designers</h3>
+                        <p class="text-sm mt-1">Consultants who specify the critical equipment and components for major projects.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Weekly Effort Distribution Chart -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-[#004AAD] mb-2">Weekly Effort Distribution</h2>
+                <p class="mb-4 text-sm">A balanced approach ensures all strategic pillars receive consistent focus. This chart illustrates the approximate allocation of team hours across key activities each week.</p>
+                <div class="chart-container">
+                    <canvas id="effortDistributionChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Section: Strategic Pillars -->
+            <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-center">
+                <h2 class="text-2xl font-bold text-[#004AAD] mb-4">The 5 Pillars of Our Strategy</h2>
+                <p class="mb-6 text-sm">This plan is built on five interconnected pillars, creating a comprehensive engine for growth and engagement.</p>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-xl text-[#0079C2] mr-3 mt-1">🎯</span>
+                        <div>
+                            <h4 class="font-bold">Content Marketing</h4>
+                            <p class="text-sm">Create educational content that solves real-world problems for AV pros.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl text-[#0079C2] mr-3 mt-1">📈</span>
+                        <div>
+                            <h4 class="font-bold">Digital Ad Optimization</h4>
+                            <p class="text-sm">Continuously refine campaigns for maximum reach and ROI.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl text-[#0079C2] mr-3 mt-1">💬</span>
+                        <div>
+                            <h4 class="font-bold">Community Engagement</h4>
+                            <p class="text-sm">Build relationships by actively participating in industry discussions.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl text-[#0079C2] mr-3 mt-1">🤝</span>
+                        <div>
+                            <h4 class="font-bold">Direct Outreach</h4>
+                            <p class="text-sm">Proactively identify and connect with high-potential prospects.</p>
+                        </div>
+                    </li>
+                     <li class="flex items-start">
+                        <span class="text-xl text-[#0079C2] mr-3 mt-1">📊</span>
+                        <div>
+                            <h4 class="font-bold">Measurement & Optimization</h4>
+                            <p class="text-sm">Use data to measure success and inform future strategy.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section: Weekly Action Plan Flowchart -->
+        <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+            <h2 class="text-2xl font-bold text-[#004AAD] mb-6">The Weekly Action Plan</h2>
+            <div class="relative">
+                <!-- Monday -->
+                <div class="flowchart-step border-[#004AAD]">
+                    <div class="flowchart-connector bg-gray-200"></div>
+                    <div class="flowchart-step:before border-[#004AAD]"></div>
+                    <h3 class="text-xl font-bold">Monday: Strategy & Performance Review</h3>
+                    <p class="text-sm mt-1">Kick off the week by analyzing past performance and planning future actions.</p>
+                    <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
+                        <li>Review last week's campaign data (Display, Search, Programmatic).</li>
+                        <li>Analyze lead generation KPIs (MQLs, SQLs, CPA).</li>
+                        <li>Brainstorm and plan this week's content calendar.</li>
+                        <li>Sync with sales and marketing teams on goals.</li>
+                    </ul>
+                </div>
+                 <!-- Tuesday -->
+                <div class="flowchart-step border-[#0079C2] mt-8">
+                     <div class="flowchart-connector bg-gray-200"></div>
+                    <div class="flowchart-step:before border-[#0079C2]"></div>
+                    <h3 class="text-xl font-bold">Tuesday: Campaign & Content Execution</h3>
+                    <p class="text-sm mt-1">Focus on optimizing live campaigns and creating new assets.</p>
+                    <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
+                        <li>Launch A/B tests for ad creatives and landing pages.</li>
+                        <li>Adjust campaign budgets and audience targeting.</li>
+                        <li>Draft blog posts and script videos.</li>
+                    </ul>
+                </div>
+                <!-- Wednesday -->
+                <div class="flowchart-step border-[#00A6D6] mt-8">
+                     <div class="flowchart-connector bg-gray-200"></div>
+                    <div class="flowchart-step:before border-[#00A6D6]"></div>
+                    <h3 class="text-xl font-bold">Wednesday: Publishing & SEO</h3>
+                    <p class="text-sm mt-1">Push content live and optimize the digital storefront.</p>
+                     <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
+                        <li>Publish new blog posts and videos.</li>
+                        <li>Distribute content via social media and email newsletters.</li>
+                        <li>Conduct keyword research and on-page SEO audits.</li>
+                    </ul>
+                </div>
+                <!-- Thursday -->
+                <div class="flowchart-step border-[#67B8DE] mt-8">
+                     <div class="flowchart-connector bg-gray-200"></div>
+                    <div class="flowchart-step:before border-[#67B8DE]"></div>
+                    <h3 class="text-xl font-bold">Thursday: Community & Direct Outreach</h3>
+                    <p class="text-sm mt-1">Engage directly with the community and high-value prospects.</p>
+                    <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
+                        <li>Participate in industry forums and LinkedIn groups.</li>
+                        <li>Identify and research high-potential leads.</li>
+                        <li>Craft and send personalized outreach emails.</li>
+                    </ul>
+                </div>
+                 <!-- Friday -->
+                <div class="flowchart-step border-[#CDE5F1] mt-8">
+                    <div class="flowchart-step:before border-[#004AAD]"></div>
+                    <h3 class="text-xl font-bold">Friday: Analysis & Planning</h3>
+                    <p class="text-sm mt-1">Report on the week's results and prepare for the next cycle.</p>
+                     <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
+                        <li>Compile and analyze the weekly performance report.</li>
+                        <li>Review A/B test results and implement winners.</li>
+                        <li>Refine strategy and outline tasks for the upcoming week.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <!-- Section: Advanced Engagement Tactics Chart -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-[#004AAD] mb-2">Prioritizing Advanced Tactics</h2>
+                <p class="mb-4 text-sm">Beyond the weekly rhythm, specific initiatives can significantly boost engagement. This chart compares potential tactics by their estimated impact, helping to guide strategic investment.</p>
+                <div class="chart-container h-96 md:h-[450px]">
+                    <canvas id="engagementTacticsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Section: Measuring Success (KPIs) -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-[#004AAD] mb-4">Measuring What Matters</h2>
+                <p class="mb-6 text-sm">Continuous improvement is driven by data. We will closely monitor these Key Performance Indicators (KPIs) to gauge the effectiveness of our lead generation engine.</p>
+                <div class="space-y-4">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-sm text-gray-500">Website Traffic</div>
+                        <div class="text-3xl font-bold text-[#0079C2]">+15% MoM</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-sm text-gray-500">Marketing Qualified Leads (MQLs)</div>
+                        <div class="text-3xl font-bold text-[#0079C2]">+20% MoM</div>
+                    </div>
+                     <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-sm text-gray-500">Lead Conversion Rate</div>
+                        <div class="text-3xl font-bold text-[#00A6D6]">Target: 3.5%</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-sm text-gray-500">Cost Per Acquisition (CPA)</div>
+                        <div class="text-3xl font-bold text-[#00A6D6]">Target: < $50</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer class="text-center p-6 mt-8 text-gray-500 text-sm">
+        <p>This infographic represents a strategic framework for Hosa Technology.</p>
+        <p>&copy; 2025 Hosa Technology. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const wrapLabel = (label, maxWidth) => {
+                if (typeof label !== 'string' || label.length <= maxWidth) {
+                    return label;
+                }
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                if (currentLine) {
+                    lines.push(currentLine.trim());
+                }
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+
+            const chartColors = {
+                blue1: '#004AAD',
+                blue2: '#0079C2',
+                blue3: '#00A6D6',
+                blue4: '#67B8DE',
+                blue5: '#CDE5F1'
+            };
+
+            const effortCtx = document.getElementById('effortDistributionChart');
+            if(effortCtx) {
+                new Chart(effortCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Strategy & Analysis', 'Content & SEO', 'Ad Optimization', 'Community & Outreach', 'Reporting'],
+                        datasets: [{
+                            label: 'Weekly Effort %',
+                            data: [30, 28, 12, 20, 10],
+                            backgroundColor: [
+                                chartColors.blue1,
+                                chartColors.blue2,
+                                chartColors.blue3,
+                                chartColors.blue4,
+                                chartColors.blue5
+                            ],
+                            borderColor: '#FFFFFF',
+                            borderWidth: 4,
+                            hoverOffset: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        family: 'Inter',
+                                        size: 12
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        },
+                        cutout: '60%'
+                    }
+                });
+            }
+
+            const tacticsCtx = document.getElementById('engagementTacticsChart');
+            if(tacticsCtx) {
+                const rawLabels = [
+                    'Educational Webinars & Workshops',
+                    'In-Depth Case Studies & Success Stories',
+                    'Targeted Social Media Ad Campaigns',
+                    'Industry Event Participation',
+                    'Guest Blogging & Content Collaboration',
+                    'Interactive Website Tools'
+                ];
+                
+                const wrappedLabels = rawLabels.map(label => wrapLabel(label, 16));
+
+                new Chart(tacticsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: wrappedLabels,
+                        datasets: [{
+                            label: 'Potential Impact Score',
+                            data: [90, 85, 75, 95, 70, 80],
+                            backgroundColor: [
+                                chartColors.blue2,
+                                chartColors.blue3,
+                                chartColors.blue4,
+                                chartColors.blue1,
+                                chartColors.blue4,
+                                chartColors.blue3,
+                            ],
+                            borderColor: chartColors.blue1,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: { family: 'Inter' }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: true,
+                                    color: '#E5E7EB'
+                                },
+                                ticks: {
+                                    font: { family: 'Inter', size: 12 }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
